@@ -3,20 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Εξυπηρετητής: 127.0.0.1
--- Χρόνος δημιουργίας: 26 Μάη 2023 στις 08:03:09
+-- Χρόνος δημιουργίας: 26 Μάη 2023 στις 08:08:53
 -- Έκδοση διακομιστή: 10.4.27-MariaDB
 -- Έκδοση PHP: 8.2.0
 
---SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
---START TRANSACTION;
---SET time_zone = "+00:00";
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
-
-DROP SCHEMA IF EXISTS library_github_new_2;
-CREATE SCHEMA library_github_new_2;
-USE library_github_new_2;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -339,22 +332,23 @@ CREATE TABLE `user` (
   `ph_nmbr` bigint(11) NOT NULL,
   `mail` varchar(45) NOT NULL,
   `nmbr_of_books` int(11) DEFAULT NULL,
-  `role_id` int(11) NOT NULL
+  `role_id` int(11) NOT NULL,
+  `approved_status` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Άδειασμα δεδομένων του πίνακα `user`
 --
 
-INSERT INTO `user` (`id`, `password`, `name`, `age`, `ph_nmbr`, `mail`, `nmbr_of_books`, `role_id`) VALUES
-(52, '', 'pavlos skou', 45, 6947177115, 'pavlos.skou@gmail.com', 1, 2),
-(100, '', 'el pap', 35, 6947854313, 'elpap@gmail.com', 0, 2),
-(123, '', 'john pap', 15, 2102856010, 'johnpap@gmail.com', 0, 1),
-(456, '', 'jim pap', 55, 2102838310, 'jimpap@gmail.com', 0, 3),
-(690, '', 'kostas spil', 50, 6954312560, 'kostasspil@gmail.com', 0, 3),
-(799, '', 'Iris pal', 65, 6985687212, 'irispal@gmail.com', 0, 4),
-(980, '', 'areti mei', 14, 6976542313, 'aretimei@gmail.com', 0, 1),
-(981, '', 'Dhm seferiadi', 34, 6984315621, 'dhm.seferiadi@gmail.com', 0, 2);
+INSERT INTO `user` (`id`, `password`, `name`, `age`, `ph_nmbr`, `mail`, `nmbr_of_books`, `role_id`, `approved_status`) VALUES
+(52, '', 'pavlos skou', 45, 6947177115, 'pavlos.skou@gmail.com', 1, 2, NULL),
+(100, '', 'el pap', 35, 6947854313, 'elpap@gmail.com', 0, 2, NULL),
+(123, '', 'john pap', 15, 2102856010, 'johnpap@gmail.com', 0, 1, NULL),
+(456, '', 'jim pap', 55, 2102838310, 'jimpap@gmail.com', 0, 3, NULL),
+(690, '', 'kostas spil', 50, 6954312560, 'kostasspil@gmail.com', 0, 3, NULL),
+(799, '', 'Iris pal', 65, 6985687212, 'irispal@gmail.com', 0, 4, NULL),
+(980, '', 'areti mei', 14, 6976542313, 'aretimei@gmail.com', 0, 1, NULL),
+(981, '', 'Dhm seferiadi', 34, 6984315621, 'dhm.seferiadi@gmail.com', 0, 2, NULL);
 
 --
 -- Ευρετήρια για άχρηστους πίνακες
@@ -551,10 +545,7 @@ CREATE DEFINER=`root`@`localhost` EVENT `.delete_old_bookings` ON SCHEDULE EVERY
     WHERE booking_date < DATE_SUB(NOW(), INTERVAL 7 DAY)$$
 
 DELIMITER ;
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
