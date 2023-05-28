@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Acceptance</title>
+</head>
+<body>
+    <h2>Review Acceptance</h2>
+    <form method="POST" action="{{ url_for('review_accept') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>See Borrowing Table for a User</title>
+</head>
+<body>
+    <h2>See Borrowing Table for a User</h2>
+    <form method="POST" action="{{ url_for('borrowing_table_user') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>

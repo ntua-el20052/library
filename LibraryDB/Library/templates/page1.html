@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 1</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            color: #333333;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Page for Students and Teachers!</h1>
+    <button onclick="location.href='{{ url_for('change_password') }}'">Change Password</button>
+    <button onclick="location.href='{{ url_for('change_personal_information') }}'">Change Personal Information</button>
+    <button onclick="location.href='{{ url_for('access_personal_data') }}'">Access Personal Information</button>
+    <button onclick="location.href='{{ url_for('book_list') }}'">List of Books</button>
+    <button onclick="location.href='{{ url_for('borrow_book') }}'">Borrow A Book</button>
+    <button onclick="location.href='{{ url_for('book_book') }}'">Reserve A Book</button>
+    <button onclick="location.href='{{ url_for('review_book') }}'">Review A Book</button>
+    <button onclick="location.href='{{ url_for('ask_to_read_review') }}'">Ask for Reviews of a book</button>
+
+</body>
+</html>

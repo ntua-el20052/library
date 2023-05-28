@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>ph_nmbr</th>
+            <th>mail</th>
+            <th>number</th>
+            <th>approved_status</th>
+
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.id.data }}</td>
+            <td>{{ form.name.data }}</td>
+            <td>{{ form.age.data }}</td>
+            <td>{{ form.ph_nmbr.data }}</td>
+            <td>{{ form.mail.data }}</td>
+            <td>{{ form.number.data }}</td>
+            <td>{{ form.approved_status.data }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

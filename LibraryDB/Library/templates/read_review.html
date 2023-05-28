@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <tr>
+            <th>isbn</th>
+            <th>likert_scale</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.likert_scale.data }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
