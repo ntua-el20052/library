@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #337ab7;
+            color: #fff;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #286090;
+        }
+    </style>
+</head>
+<body>
+    <h2>Add New Book</h2>
+    <form method="POST" action="{{ url_for('add_new_book') }}">
+        {{ form.csrf_token }}
+        <label for="isbn">ISBN</label>
+        {{ form.isbn }}
+
+        <label for="title">Title</label>
+        {{ form.title }}
+
+        <label for="publisher">Publisher</label>
+        {{ form.publisher }}
+
+        <label for="pages">Pages</label>
+        {{ form.pages }}
+
+        <label for="summary">Summary</label>
+        {{ form.summary }}
+
+        <label for="nmbr_of_copies">Number of Copies</label>
+        {{ form.nmbr_of_copies }}
+
+        <label for="school_name">School Name</label>
+        {{ form.school_name }}
+
+        <label for="genre">Genres</label>
+        {{ form.genre }}
+
+        <label for="key_words">Keywords</label>
+        {{ form.key_words }}
+
+        <label for="author">Authors</label>
+        {{ form.author }}
+
+        <label for="image">Image</label>
+        {{ form.image }}
+
+        <label for="language">Language</label>
+        {{ form.language }}
+
+        {{ form.submit }}
+    </form>
+</body>
+</html>

@@ -1,0 +1,793 @@
+PAGE 1
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 1</title>
+</head>
+<body>
+    <h1>Welcome to Page for the User</h1>
+    <button onclick="location.href='{{ url_for('change_password') }}'">Change Password</button>
+    <button onclick="location.href='{{ url_for('change_personal_information') }}'">Change Personal Information</button>
+    <button onclick="location.href='{{ url_for('access_personal_data') }}'">Access Personal Information</button>
+    <button onclick="location.href='{{ url_for('book_list') }}'">List of Books</button>
+    <button onclick="location.href='{{ url_for('borrow_book') }}'">Borrow A Book</button>
+    <button onclick="location.href='{{ url_for('book_book') }}'">Reserve A Book</button>
+    <button onclick="location.href='{{ url_for('review_book') }}'">Review A Book</button>
+    <button onclick="location.href='{{ url_for('ask_to_read_review') }}'">Ask for Reviews of a book</button>
+
+</body>
+</html>
+
+
+.............................................................................................
+
+
+HOMEPAGE
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the Library</h1>
+    <a href="/login"><button>Login</button></a>
+    <a href="/register"><button>Register</button></a>
+</body>
+</html>
+
+
+.............................................................................................
+
+LOGIN
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <label for="identifier">Identifier:</label>
+        <input type="text" id="identifier" name="identifier" required><br><br>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+STYLE:
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            color: #333333;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+.............................................................................................
+
+access_personal_data
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Data</title>
+    
+</head>
+<body>
+    <h1>User Data</h1>
+    <p>User ID: {{ user_id }}</p>
+    <p>Username: {{ name }}</p>
+    <p>Age: {{ age }}</p>
+    <p>Email: {{ mail }}</p>
+    <p>Phone: {{ ph_nmbr }}</p>
+    <p>Number of books: {{ nmbr_of_books }}</p>
+</body>
+</html>
+
+.............................................................................................
+
+request to access personal data.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Personal Data</title>
+</head>
+<body>
+    <h2>Access Personal Data</h2>
+    <form method="POST" action="{{ url_for('access_personal_data') }}">
+        {{ form.csrf_token }}
+        {{ form.name.label }} {{ form.name }}
+        {{ form.password.label }} {{ form.password }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+add_new_book.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Book</title>
+</head>
+<body>
+    <h2>Add New Book</h2>
+    <form method="POST" action="{{ url_for('add_new_book') }}">
+        {{ form.csrf_token }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.title.label }} {{ form.title }}
+        {{ form.publisher.label }} {{ form.publisher }}
+        {{ form.author.label }} {{ form.author }}
+        {{ form.pages.label }} {{ form.pages }}
+        {{ form.summary.label }} {{ form.summary }}
+        {{ form.nmbr_of_copies.label }} {{ form.nmbr_of_copies }}
+        {{ form.school_name.label }} {{ form.school_name }}
+        {{ form.image.label }} {{ form.image }}
+        {{ form.genre.label }} {{ form.genre }}
+        {{ form.language.label }} {{ form.language }}
+        {{ form.key_words.label }} {{ form.key_words }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+add_new_school.html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Adding new School</title>
+</head>
+<body>
+    <h2>Adding new School</h2>
+    <form method="POST" action="{{ url_for('add_new_school') }}">
+        {{ form.csrf_token }}
+        {{ form.name.label }} {{ form.name }}
+        {{ form.city.label }} {{ form.city }}
+        {{ form.phonenumber.label }} {{ form.phonenumber }}
+        {{ form.mail.label }} {{ form.mail }}
+        {{ form.addrcode.label }} {{ form.addrcode}}
+        {{ form.address.label }} {{ form.address }}
+        {{ form.directorname.label }} {{ form.directorname }}
+        {{ form.submit }}
+    </form>
+</body>
+
+.............................................................................................
+
+allow_borrowing_book_form.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Allow Borrowing a book</title>
+</head>
+<body>
+    <h2>Allow Borrowing a book</h2>
+    <form method="POST" action="{{ url_for('allow_borrowing_book') }}">
+        {{ form.csrf_token }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+.............................................................................................
+
+ask_to_read_review.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask for Reviews of specific ISBN</title>
+</head>
+<body>
+    <h2>Ask for Reviews of specific ISBN</h2>
+    <form method="POST" action="{{ url_for('ask_to_read_review') }}">
+        {{ form.csrf_token }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+.............................................................................................
+
+read_review.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <tr>
+            <th>isbn</th>
+            <th>likert_scale</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.likert_scale.data }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+.............................................................................................
+
+book_book.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reserve a book</title>
+</head>
+<body>
+    <h2>Reserve a book</h2>
+    <form method="POST" action="{{ url_for('book_book') }}">
+        {{ form.csrf_token }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+book_list.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <tr>
+            <th>isbn</th>
+            <th>title</th>
+            <th>publisher</th>
+            <th>author</th>
+            <th>pages</th>
+            <th>summary</th>
+            <th>nmbr_of_copies</th>
+            <th>image</th>
+            <th>genre</th>
+            <th>language</th>
+            <th>key_words</th>
+
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.title.data }}</td>
+            <td>{{ form.publisher.data }}</td>
+            <td>{{ form.author.data }}</td>
+            <td>{{ form.pages.data }}</td>
+            <td>{{ form.summary.data }}</td>
+            <td>{{ form.nmbr_of_copies.data }}</td>
+            <td>{{ form.image.data }}</td>
+            <td>{{ form.genre.data }}</td>
+            <td>{{ form.language.data }}</td>
+            <td>{{ form.key_words.data }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+.............................................................................................
+
+
+booking_table.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Table</title>
+</head>
+<body>
+    <h1>Booking Table</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>isbn</th>
+            <th>date</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.id.data }}</td>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.date.data }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+.............................................................................................
+
+borrow_book_form.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrow a book</title>
+</head>
+<body>
+    <h2>Borrow a book</h2>
+    <form method="POST" action="{{ url_for('borrow_book') }}">
+        {{ form.csrf_token }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+borrowing_table.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrowing Table</title>
+</head>
+<body>
+    <h1>Borrowing Table</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>isbn</th>
+            <th>date</th>
+            <th>status</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.id.data }}</td>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.date.data }}</td>
+            <td>{{ form.status.data }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+.............................................................................................
+
+
+borrowing_table_user.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>See Borrowing Table for a User</title>
+</head>
+<body>
+    <h2>See Borrowing Table for a User</h2>
+    <form method="POST" action="{{ url_for('borrowing_table_user') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+.............................................................................................
+
+change_approval_status.html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Approve of Applications</title>
+</head>
+<body>
+    <h2>Approve of Applications</h2>
+    <form method="POST" action="{{ url_for('change_approval_status') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.status.label }} {{ form.status }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+change_password.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Password</title>
+</head>
+<body>
+    <h2>Change Password</h2>
+    <form method="POST" action="{{ url_for('change_password') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.entered_password.label }} {{ form.entered_password }}
+        {{ form.new_password.label }} {{ form.new_password }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+change_personal_information.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Personal Information</title>
+</head>
+<body>
+    <h2>Change Personal Information</h2>
+    <form method="POST" action="{{ url_for('change_personal_information') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.name.label }} {{ form.name }}
+        {{ form.age.label }} {{ form.age }}
+
+        {{ form.phonenumber.label }} {{ form.phonenumber }}
+        {{ form.mail.label }} {{ form.mail }}
+        {{ form.entered_password.label }} {{ form.entered_password }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+delete_booking.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete a Reservation</title>
+</head>
+<body>
+    <h2>Delete a Reservation</h2>
+    <form method="POST" action="{{ url_for('delete_booking') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+delete_deactivate_an_account.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete/Deactivate an Account</title>
+</head>
+<body>
+    <h2>Delete/Deactivate an Account</h2>
+    <form method="POST" action="{{ url_for('delete_deactivate_an_account') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.status.label }} {{ form.status }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+edit_book_information.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Book Information</title>
+</head>
+<body>
+    <h2>Edit Book Information</h2>
+    <form method="POST" action="{{ url_for('edit_book_information') }}">
+        {{ form.csrf_token }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.title.label }} {{ form.title }}
+        {{ form.publisher.label }} {{ form.publisher }}
+        {{ form.author.label }} {{ form.author }}
+        {{ form.pages.label }} {{ form.pages }}
+        {{ form.summary.label }} {{ form.summary }}
+        {{ form.nmbr_of_copies.label }} {{ form.nmbr_of_copies }}
+        {{ form.image.label }} {{ form.image }}
+        {{ form.genre.label }} {{ form.genre }}
+        {{ form.language.label }} {{ form.language }}
+        {{ form.key_words.label }} {{ form.key_words }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+
+register.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        <label for="identifier">Identifier:</label>
+        <input type="text" id="identifier" name="identifier" required><br><br>
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required><br><br>
+         <label for="phonenumber">Phone Number:</label>
+        <input type="text" id="phonenumber" name="phonenumber" required><br><br>
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
+</html>
+
+.............................................................................................
+
+register_school.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register School</title>
+</head>
+<body>
+    <h1>Register School</h1>
+    <form action="{{ url_for('register_school') }}" method="POST">
+        {{ form.csrf_token }}
+        {{ form.school.label }} {{ form.school }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+return_book_form.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Return a book</title>
+</head>
+<body>
+    <h2>Return a book</h2>
+    <form method="POST" action="{{ url_for('return_book') }}">
+        {{ form.csrf_token }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+
+review_accept_table.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Acceptance</title>
+</head>
+<body>
+    <h2>Review Acceptance</h2>
+    <form method="POST" action="{{ url_for('review_accept') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+review_book.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review Book</title>
+</head>
+<body>
+    <h2>Review Book</h2>
+    <form method="POST" action="{{ url_for('review_book') }}">
+        {{ form.csrf_token }}
+        {{ form.id.label }} {{ form.id }}
+        {{ form.isbn.label }} {{ form.isbn }}
+        {{ form.likert_scale.label }} {{ form.likert_scale }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
+
+review_table.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>isbn</th>
+            <th>likert_scale</th>
+            <th>review_status</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.id.data }}</td>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.likert_scale.data }}</td>
+            <td>{{ form.review_status.data }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+.............................................................................................
+
+user_table.html
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>ph_nmbr</th>
+            <th>mail</th>
+            <th>number</th>
+            <th>approved_status</th>
+
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.id.data }}</td>
+            <td>{{ form.name.data }}</td>
+            <td>{{ form.age.data }}</td>
+            <td>{{ form.ph_nmbr.data }}</td>
+            <td>{{ form.mail.data }}</td>
+            <td>{{ form.number.data }}</td>
+            <td>{{ form.approved_status.data }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+.............................................................................................
+
+user_table_statuses.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Table</title>
+    
+</head>
+<body>
+    <h1>User Table</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>age</th>
+            <th>ph_nmbr</th>
+            <th>mail</th>
+            <th>number</th>
+            <th>approved_status</th>
+
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.id.data }}</td>
+            <td>{{ form.name.data }}</td>
+            <td>{{ form.age.data }}</td>
+            <td>{{ form.ph_nmbr.data }}</td>
+            <td>{{ form.mail.data }}</td>
+            <td>{{ form.number.data }}</td>
+            <td>{{ form.approved_status.data }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+.............................................................................................
+
+add_author.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Author</title>
+</head>
+<body>
+    <h2>Add Author</h2>
+    <form method="POST" action="{{ url_for('add_author') }}">
+        {{ form.csrf_token }}
+        {{ form.author_name.label }} {{ form.author_name }}
+        {{ form.submit }}
+    </form>
+</body>
+</html>
+
+.............................................................................................
