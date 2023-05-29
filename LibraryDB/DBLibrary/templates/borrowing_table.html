@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Borrowing Table</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333333;
+        }
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        td[data-status="Reserved"] {
+            color: #ff9800;
+            font-weight: bold;
+        }
+        td[data-status="Borrowed"] {
+            color: #4caf50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Borrowing Table</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>isbn</th>
+            <th>date</th>
+            <th>status</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.id.data }}</td>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.date.data }}</td>
+            <td>{{ form.status.data }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
