@@ -167,7 +167,7 @@ CREATE TABLE `books` (
   `pages` int(11) NOT NULL,
   `summary` varchar(200) NOT NULL,
   `nmbr_of_copies` int(11) NOT NULL,
-  `image` varchar(100) NOT NULL,
+  `image` varchar(500) NOT NULL,
   `language` varchar(45) NOT NULL
 ) ;
 
