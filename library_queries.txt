@@ -32,7 +32,7 @@ SELECT u.name, u.age, COUNT(*) AS num_books_borrowed
 FROM user u
 JOIN borrowing b ON u.id = b.id
 JOIN goes_to h ON b.id = h.id
-JOIN school_unit su ON h.school_name = su.school_name
+JOIN school_unit su ON h.name = su.school_name
 WHERE u.age < 40 AND u.number = 2
 GROUP BY u.name, u.age
 ORDER BY num_books_borrowed DESC;
