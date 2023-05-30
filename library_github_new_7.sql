@@ -255,7 +255,7 @@ CREATE TRIGGER `before_insert` BEFORE INSERT ON `borrowing` FOR EACH ROW BEGIN
     DECLARE role INT;
     DECLARE bor_books INT;
     DECLARE situationship VARCHAR(25);
-    DECLARE book_school_name VARCHAR(45);
+    --DECLARE book_school_name VARCHAR(45);
     DECLARE user_school_name VARCHAR(45);
     
     SELECT status INTO situationship
@@ -267,7 +267,7 @@ CREATE TRIGGER `before_insert` BEFORE INSERT ON `borrowing` FOR EACH ROW BEGIN
     SET bor_books = (SELECT weekly_borrowing_count FROM user WHERE id = NEW.id);
     SET user_school_name = (SELECT name FROM goes_to WHERE id=NEW.id);
     SET copies = (SELECT nmbr_of_copies_per_school FROM belongs_to WHERE isbn = NEW.isbn AND name = user_school_name );
-    SET book_school_name = (SELECT name FROM belongs_to WHERE isbn=NEW.isbn AND name=user_school_name);
+   -- SET book_school_name = (SELECT name FROM belongs_to WHERE isbn=NEW.isbn AND name=user_school_name);
     
      IF EXISTS (
         SELECT 1
@@ -281,7 +281,7 @@ CREATE TRIGGER `before_insert` BEFORE INSERT ON `borrowing` FOR EACH ROW BEGIN
     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'You cannot borrow a book because you havent returned a book in time.';
     END IF;
     
-    IF book_school_name IS NULL THEN 
+    IF copies IS NULL THEN 
      SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'You cannot borrow a book from different school unit.';
      END IF;
     
