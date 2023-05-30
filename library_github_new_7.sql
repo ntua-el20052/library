@@ -266,7 +266,6 @@ CREATE TRIGGER `before_insert` BEFORE INSERT ON `borrowing` FOR EACH ROW BEGIN
     SET bor_books = (SELECT weekly_borrowing_count FROM user WHERE id = NEW.id);
     SET user_school_name = (SELECT name FROM goes_to WHERE id=NEW.id);
     SET copies = (SELECT nmbr_of_copies_per_school FROM belongs_to WHERE isbn = NEW.isbn AND name = user_school_name );
-   -- SET book_school_name = (SELECT name FROM belongs_to WHERE isbn=NEW.isbn AND name=user_school_name);
     
      IF EXISTS (
         SELECT 1
