@@ -2,7 +2,7 @@
 CREATE VIEW loans_per_school AS
 SELECT su.school_name, COUNT(*) AS total_loans
 FROM borrowing b
-JOIN handles h ON b.id = h.id
+JOIN goes_to h ON b.id = h.id
 JOIN school_unit su ON h.school_name = su.school_name
 WHERE YEAR(b.borrowing_date) = <year>
   AND MONTH(b.borrowing_date) = <month>
@@ -18,7 +18,7 @@ JOIN genres g ON bg.genre_id = g.genre_id;
 CREATE VIEW teachers_borrowed_category AS
 SELECT DISTINCT su.school_name, u.name
 FROM school_unit su
-JOIN handles h ON su.school_name = h.school_name
+JOIN goes_to h ON su.school_name = h.name
 JOIN borrowing b ON h.id = b.id
 JOIN books bk ON b.isbn = bk.isbn
 JOIN book_genre bg ON bk.isbn = bg.isbn
@@ -31,7 +31,7 @@ CREATE VIEW young_teachers_most_books AS
 SELECT u.name, u.age, COUNT(*) AS num_books_borrowed
 FROM user u
 JOIN borrowing b ON u.id = b.id
-JOIN handles h ON b.id = h.id
+JOIN goes_to h ON b.id = h.id
 JOIN school_unit su ON h.school_name = su.school_name
 WHERE u.age < 40 AND u.number = 2
 GROUP BY u.name, u.age
