@@ -255,7 +255,6 @@ CREATE TRIGGER `before_insert` BEFORE INSERT ON `borrowing` FOR EACH ROW BEGIN
     DECLARE role INT;
     DECLARE bor_books INT;
     DECLARE situationship VARCHAR(25);
-    --DECLARE book_school_name VARCHAR(45);
     DECLARE user_school_name VARCHAR(45);
     
     SELECT status INTO situationship
