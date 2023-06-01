@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask for Average Score</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        select,
+        input[type="text"],
+        input[type="submit"] {
+            padding: 5px;
+            margin: 5px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ask for Average Score</h1>
+
+    <form method="POST" action="{{ url_for('average_score') }}">
+        {{ form.csrf_token }}
+        <div>
+            <label for="{{ form.genre.id }}">{{ form.genre.label }}</label>
+            {{ form.genre }}
+        </div>
+        <div>
+            <label for="{{ form.id.id }}">{{ form.id.label }}</label>
+            {{ form.id }}
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>

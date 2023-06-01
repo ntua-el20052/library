@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delayed Users List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h2 {
+            color: #333333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #777777;
+        }
+    </style>
+</head>
+<body>
+    <h2>Delayed Users List</h2>
+    {% if delays %}
+        <table>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+            </tr>
+            {% for user in delays %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No delayed users found.</p>
+    {% endif %}
+</body>
+</html>

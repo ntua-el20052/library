@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Author Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #cccccc;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        .button-container button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .button-container button:hover {
+            background-color: #0069d9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Author Table</h1>
+    <table>
+        <tr>
+            <th>Author ID</th>
+            <th>Author's Name</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.author_id.data }}</td>
+            <td>{{ form.author_name.data }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="button-container">
+        <button onclick="location.href='{{ url_for('add_author') }}'">Add New Author</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page 1</title>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 100px;
+        }
+        h1 {
+            color: #333333;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Page for Students and Teachers!</h1>
+
+    <button onclick="location.href='{{ url_for('access_personal_data') }}'">Access Personal Information</button>
+    <button onclick="location.href='{{ url_for('book_list') }}'">List of Books</button>
+    <button onclick="location.href='{{ url_for('search_title') }}'">Search Books by Title</button>
+    <button onclick="location.href='{{ url_for('search_genre') }}'">Search Books by Genre</button>
+    <button onclick="location.href='{{ url_for('search_author') }}'">Search Books by Author</button>
+    <button onclick="location.href='{{ url_for('borrow_book') }}'">Borrow A Book</button>
+    <button onclick="location.href='{{ url_for('book_book') }}'">Reserve A Book</button>
+    <button onclick="location.href='{{ url_for('review_book') }}'">Review A Book</button>
+    <button onclick="location.href='{{ url_for('ask_to_read_review') }}'">Reviews for a Book</button>
+    <button onclick="location.href='{{ url_for('delete_booking') }}'">Delete a Reservation</button>
+    <button onclick="location.href='{{ url_for('borrowed_books') }}'">See the books you have borrowed</button>
+
+</body>
+</html>

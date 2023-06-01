@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333333;
+        }
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Book Table</h1>
+    <table>
+        <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Publisher</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Summary</th>
+            <th>No. of Copies</th>
+            <th>Image</th>
+            <th>Genre</th>
+            <th>Language</th>
+            <th>Keywords</th>
+            <th>Schools that have this particular book</th>
+        </tr>
+        {% for form in table_forms %}
+        <tr>
+            <td>{{ form.isbn.data }}</td>
+            <td>{{ form.title.data }}</td>
+            <td>{{ form.publisher.data }}</td>
+            <td>{{ form.authors.data }}</td>
+            <td>{{ form.pages.data }}</td>
+            <td>{{ form.summary.data }}</td>
+            <td>{{ form.nmbr_of_copies.data }}</td>
+            <td>{{ form.image.data }}</td>
+            <td>{{ form.genres.data }}</td>
+            <td>{{ form.language.data }}</td>
+            <td>{{ form.key_words.data }}</td>
+            <td>{{ form.school_unit.data }}</td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+
