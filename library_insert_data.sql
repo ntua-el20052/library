@@ -40,6 +40,7 @@ INSERT INTO `authors` (`author_id`, `author_name`) VALUES
 (39, 'Daniel Mitchell'),
 (40, 'Daniel Morgan'),
 (41, 'Elijah Barnes'),
+(150, 'Elisavet Papadopoulou'),
 (42, 'Emily Harrison'),
 (43, 'Emily Sullivan'),
 (44, 'Emily Tran'),
