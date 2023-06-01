@@ -1512,7 +1512,7 @@ INSERT INTO `goes_to` (`goes_to_id`, `id`, `name`) VALUES
 INSERT INTO `handles` (`handle_id`, `id`, `school_name`, `borrowings_approved`) VALUES
 (1, 170000000, '1o ATHINON', 49),
 (2, 270000000, '2o PATRAS', 43),
-(3, 370000000, '3o BOLOU', 47),
+(3, 370000000, '3o BOLOU', 49),
 (4, 470000000, '4o THESSALONIKIS', 0);
 
 INSERT INTO `key_word` (`key_word_id`, `key_word`) VALUES
