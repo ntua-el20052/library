@@ -7,9 +7,17 @@
 -- Έκδοση διακομιστή: 10.4.27-MariaDB
 -- Έκδοση PHP: 8.2.0
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+--SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+--START TRANSACTION;
+--SET time_zone = "+00:00";
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+DROP SCHEMA IF EXISTS library_final;
+CREATE SCHEMA library_final;
+USE library_final;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -2685,6 +2693,8 @@ ALTER TABLE `user`
 ALTER TABLE `belongs_to`
   ADD CONSTRAINT `belongs_to_ibfk_1` FOREIGN KEY (`name`) REFERENCES `school_unit` (`school_name`) ON UPDATE CASCADE,
   ADD CONSTRAINT `belongs_to_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
+ALTER TABLE belongs_to
+  ADD constraint positive_number_per_school CHECK (nmbr_of_copies_per_school >=0);
 
 --
 -- Περιορισμοί για πίνακα `booking`
@@ -2692,6 +2702,14 @@ ALTER TABLE `belongs_to`
 ALTER TABLE `booking`
   ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
+  
+  --
+  -- Περιορισμοι για πινακα 'books'
+  --
+  
+ALTER TABLE books
+  ADD CONSTRAINT positive_nmbr_of_books CHECK (nmbr_of_copies >= 0),
+  ADD CONSTRAINT isbn_length CHECK (octet_length(isbn) = 13);
 
 --
 -- Περιορισμοί για πίνακα `book_author`
@@ -2721,6 +2739,8 @@ ALTER TABLE `borrowing`
   ADD CONSTRAINT `borrowing_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `borrowing_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
 
+ALTER TABLE borrowing
+  ADD CONSTRAINT status CHECK (status IN ('active', 'delayed', 'returned', 'inactive'));
 --
 -- Περιορισμοί για πίνακα `goes_to`
 --
@@ -2748,7 +2768,27 @@ ALTER TABLE `manages`
 ALTER TABLE `review`
   ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`);
+  
+ALTER TABLE review
+  ADD CONSTRAINT likert_scale_constraint CHECK (likert_scale >= 0 and likert_scale <= 5),
+  ADD CONSTRAINT check_review_status CHECK (review_status in ('approved', 'inapproved'));
+  
+--
+-- Περιορισμοι για πινακα 'school_unit'
+--
+ALTER TABLE school_unit
+  ADD CONSTRAINT sch_ph_number_length CHECK (LENGTH(ph_nmbr) = 10);
 
+--
+--Περιορισμοι για πινακα 'user'
+--
+ALTER TABLE user
+  ADD CONSTRAINT ph_number_length CHECK (LENGTH(ph_nmbr) = 10),
+  ADD CONSTRAINT positive_number_of_books CHECK (nmbr_of_books >= 0),
+  ADD CONSTRAINT positive_age CHECK (age >= 0),
+  ADD CONSTRAINT role_id_constraint CHECK (number >= 0 AND number <= 4),
+  ADD CONSTRAINT check_approved_status CHECK (approved_status IS NULL OR approved_status IN ('active', 'inactive'));
+  
 DELIMITER $$
 --
 -- Συμβάντα
@@ -2777,7 +2817,11 @@ END
 WHERE number IN (1, 2)$$
 
 DELIMITER ;
-COMMIT;
+--COMMIT;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
