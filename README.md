@@ -1,6 +1,6 @@
 # Library Databases
 
-Project for the Databases 2023 class in NTUA ECE that simulates a Database for a union of libraries of different schools, LibraryDB.
+Project for the Databases 2023 class of 2nd semester in NTUA ECE. It simulates a Database for a Library which consists of different schools, LibraryDB.
 
 ## Authors
 - Konstantinos Spiliotopoulos, 03120881
