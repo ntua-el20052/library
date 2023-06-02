@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Books you have reserved</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #cccccc;
+            background-color: #ffffff;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Books you have reserved</h2>
+    <ul>
+        {% for book in borrowed_books %}
+            <li>{{ book[0] }} - {{ book[1] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

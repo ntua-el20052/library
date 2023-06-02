@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ask for Borrowings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            padding: 5px;
+        }
+        input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Ask for Borrowings</h2>
+    <form method="POST" action="{{ url_for('see_loans') }}">
+        {{ form.csrf_token }}
+        <div>
+            <label for="{{ form.year.id }}">{{ form.year.label }}</label>
+            {{ form.year }}
+        </div>
+        <div>
+            <label for="{{ form.month.id }}">{{ form.month.label }}</label>
+            {{ form.month }}
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>
+
+
+
+

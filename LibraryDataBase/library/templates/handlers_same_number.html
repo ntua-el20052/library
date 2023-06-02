@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Operators that approved the same number of borrowings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Operators that approved the same number of borrowings</h1>
+    <ul>
+        {% for handler in handlers %}
+        <li>{{ handler[0] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
