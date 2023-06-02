@@ -13,7 +13,7 @@ Project for the Databases 2023 class of 2nd semester in NTUA ECE. It simulates a
 
 ## Relational Model
 
-![Relational Model](link_to_relational_model_image)
+![Relational Model](https://github.com/pavlosskourtis/libraryimages/er_diagram.png)
 
 ## Guide for Installation
 
