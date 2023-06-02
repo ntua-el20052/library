@@ -23,17 +23,17 @@ git clone https://github.com/pavlosskourtis/library
 into a local directory.
 
 2. Install the requirements by running the following command in the same working directory where you saved the repository:
-'pip install -r requirements.txt'
+- pip install -r requirements.txt
 
 3. Create the database using MySQL/MariaDB and execute the following commands:
-'mysql -u root -p'
-'source library_create_schema.sql'
-'source library_insert_data.sql'
+- mysql -u root -p
+- source library_create_schema.sql
+- source library_insert_data.sql
 
 4. Run the application using Python:
-'python app.py' 
+- python app.py
 or
-'python 3 app.py'
+- python 3 app.py
 depending on the version of Python installed on your machine.
 
 ## Requirements
