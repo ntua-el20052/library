@@ -1,0 +1,317 @@
+--
+-- Ευρετήρια για πίνακες
+--
+
+--
+-- Ευρετήρια για πίνακα `authors`
+--
+ALTER TABLE `authors`
+  ADD PRIMARY KEY (`author_id`),
+  ADD KEY `author_name` (`author_name`);
+
+--
+-- Ευρετήρια για πίνακα `belongs_to`
+--
+ALTER TABLE `belongs_to`
+  ADD PRIMARY KEY (`blng_to_id`),
+  ADD KEY `belongs_to_ibfk_1` (`name`),
+  ADD KEY `belongs_to_ibfk_2` (`isbn`);
+
+--
+-- Ευρετήρια για πίνακα `booking`
+--
+ALTER TABLE `booking`
+  ADD PRIMARY KEY (`booking_id`),
+  ADD KEY `booking_ibfk_1` (`id`),
+  ADD KEY `booking_ibfk_2` (`isbn`),
+  ADD KEY `booking_date` (`booking_date`);
+
+--
+-- Ευρετήρια για πίνακα `books`
+--
+ALTER TABLE `books`
+  ADD PRIMARY KEY (`isbn`),
+  ADD KEY `title` (`title`);
+
+--
+-- Ευρετήρια για πίνακα `book_author`
+--
+ALTER TABLE `book_author`
+  ADD PRIMARY KEY (`book_author_id`),
+  ADD KEY `book_author_ibfk_1` (`isbn`),
+  ADD KEY `book_author_ibfk_2` (`author_id`);
+
+--
+-- Ευρετήρια για πίνακα `book_genre`
+--
+ALTER TABLE `book_genre`
+  ADD PRIMARY KEY (`book_genre_id`),
+  ADD KEY `book_genre_ibfk_1` (`isbn`),
+  ADD KEY `book_genre_ibfk_2` (`genre_id`);
+
+--
+-- Ευρετήρια για πίνακα `book_key_words`
+--
+ALTER TABLE `book_key_words`
+  ADD PRIMARY KEY (`book_key_word_id`),
+  ADD KEY `book_key_words_ibfk_1` (`isbn`),
+  ADD KEY `book_key_words_ibfk_2` (`key_word_id`);
+
+--
+-- Ευρετήρια για πίνακα `borrowing`
+--
+ALTER TABLE `borrowing`
+  ADD PRIMARY KEY (`borrowing_id`),
+  ADD KEY `borrowing_ibfk_1` (`id`),
+  ADD KEY `borrowing_ibfk_2` (`isbn`),
+  ADD KEY `borrowing_date` (`borrowing_date`);
+
+--
+-- Ευρετήρια για πίνακα `genres`
+--
+ALTER TABLE `genres`
+  ADD PRIMARY KEY (`genre_id`),
+  ADD KEY `genre_name` (`genre_name`);
+
+--
+-- Ευρετήρια για πίνακα `goes_to`
+--
+ALTER TABLE `goes_to`
+  ADD PRIMARY KEY (`goes_to_id`),
+  ADD KEY `goes_to_ibfk_1` (`id`),
+  ADD KEY `goes_to_ibfk_2` (`name`);
+
+--
+-- Ευρετήρια για πίνακα `handles`
+--
+ALTER TABLE `handles`
+  ADD PRIMARY KEY (`handle_id`),
+  ADD KEY `handles_ibfk_1` (`id`),
+  ADD KEY `handles_ibfk_2` (`school_name`);
+
+--
+-- Ευρετήρια για πίνακα `key_word`
+--
+ALTER TABLE `key_word`
+  ADD PRIMARY KEY (`key_word_id`),
+  ADD KEY `key_word` (`key_word`);
+
+--
+-- Ευρετήρια για πίνακα `manages`
+--
+ALTER TABLE `manages`
+  ADD PRIMARY KEY (`manages_id`),
+  ADD KEY `manages_ibfk_1` (`name`),
+  ADD KEY `manages_ibfk_2` (`id`);
+
+--
+-- Ευρετήρια για πίνακα `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `review_ibfk_2` (`isbn`),
+  ADD KEY `review_ibfk_1` (`id`);
+
+--
+-- Ευρετήρια για πίνακα `school_unit`
+--
+ALTER TABLE `school_unit`
+  ADD PRIMARY KEY (`school_name`);
+
+--
+-- Ευρετήρια για πίνακα `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `number` (`number`),
+  ADD KEY `approved_status` (`approved_status`),
+  ADD KEY `weekly_borrowing_count` (`weekly_borrowing_count`),
+  ADD KEY `weekly_booking_count` (`weekly_booking_count`);
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--
+-- AUTO_INCREMENT για πίνακα `authors`
+--
+ALTER TABLE `authors`
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+
+--
+-- AUTO_INCREMENT για πίνακα `belongs_to`
+--
+ALTER TABLE `belongs_to`
+  MODIFY `blng_to_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
+
+--
+-- AUTO_INCREMENT για πίνακα `booking`
+--
+ALTER TABLE `booking`
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+
+--
+-- AUTO_INCREMENT για πίνακα `book_author`
+--
+ALTER TABLE `book_author`
+  MODIFY `book_author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+
+--
+-- AUTO_INCREMENT για πίνακα `book_genre`
+--
+ALTER TABLE `book_genre`
+  MODIFY `book_genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+
+--
+-- AUTO_INCREMENT για πίνακα `book_key_words`
+--
+ALTER TABLE `book_key_words`
+  MODIFY `book_key_word_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=353;
+
+--
+-- AUTO_INCREMENT για πίνακα `borrowing`
+--
+ALTER TABLE `borrowing`
+  MODIFY `borrowing_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT για πίνακα `genres`
+--
+ALTER TABLE `genres`
+  MODIFY `genre_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT για πίνακα `goes_to`
+--
+ALTER TABLE `goes_to`
+  MODIFY `goes_to_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=188;
+
+--
+-- AUTO_INCREMENT για πίνακα `handles`
+--
+ALTER TABLE `handles`
+  MODIFY `handle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT για πίνακα `key_word`
+--
+ALTER TABLE `key_word`
+  MODIFY `key_word_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
+
+--
+-- AUTO_INCREMENT για πίνακα `manages`
+--
+ALTER TABLE `manages`
+  MODIFY `manages_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT για πίνακα `review`
+--
+ALTER TABLE `review`
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT για πίνακα `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--
+-- Περιορισμοί για πίνακα `belongs_to`
+--
+ALTER TABLE `belongs_to`
+  ADD CONSTRAINT `belongs_to_ibfk_1` FOREIGN KEY (`name`) REFERENCES `school_unit` (`school_name`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `belongs_to_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
+ALTER TABLE belongs_to
+  ADD constraint positive_number_per_school CHECK (nmbr_of_copies_per_school >=0);
+
+--
+-- Περιορισμοί για πίνακα `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
+  
+  --
+  -- Περιορισμοι για πινακα 'books'
+  --
+  
+ALTER TABLE books
+  ADD CONSTRAINT positive_nmbr_of_books CHECK (nmbr_of_copies >= 0),
+  ADD CONSTRAINT isbn_length CHECK (octet_length(isbn) = 13);
+
+--
+-- Περιορισμοί για πίνακα `book_author`
+--
+ALTER TABLE `book_author`
+  ADD CONSTRAINT `book_author_ibfk_1` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `book_author_ibfk_2` FOREIGN KEY (`author_id`) REFERENCES `authors` (`author_id`) ON UPDATE CASCADE;
+
+--
+-- Περιορισμοί για πίνακα `book_genre`
+--
+ALTER TABLE `book_genre`
+  ADD CONSTRAINT `book_genre_ibfk_1` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `book_genre_ibfk_2` FOREIGN KEY (`genre_id`) REFERENCES `genres` (`genre_id`) ON UPDATE CASCADE;
+
+--
+-- Περιορισμοί για πίνακα `book_key_words`
+--
+ALTER TABLE `book_key_words`
+  ADD CONSTRAINT `book_key_words_ibfk_1` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `book_key_words_ibfk_2` FOREIGN KEY (`key_word_id`) REFERENCES `key_word` (`key_word_id`) ON UPDATE CASCADE;
+
+--
+-- Περιορισμοί για πίνακα `borrowing`
+--
+ALTER TABLE `borrowing`
+  ADD CONSTRAINT `borrowing_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `borrowing_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
+
+ALTER TABLE borrowing
+  ADD CONSTRAINT status CHECK (status IN ('active', 'delayed', 'returned', 'inactive'));
+--
+-- Περιορισμοί για πίνακα `goes_to`
+--
+ALTER TABLE `goes_to`
+  ADD CONSTRAINT `goes_to_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `goes_to_ibfk_2` FOREIGN KEY (`name`) REFERENCES `school_unit` (`school_name`) ON UPDATE CASCADE;
+
+--
+-- Περιορισμοί για πίνακα `handles`
+--
+ALTER TABLE `handles`
+  ADD CONSTRAINT `handles_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `handles_ibfk_2` FOREIGN KEY (`school_name`) REFERENCES `school_unit` (`school_name`) ON UPDATE CASCADE;
+
+--
+-- Περιορισμοί για πίνακα `manages`
+--
+ALTER TABLE `manages`
+  ADD CONSTRAINT `manages_ibfk_1` FOREIGN KEY (`name`) REFERENCES `school_unit` (`school_name`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `manages_ibfk_2` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE;
+
+--
+-- Περιορισμοί για πίνακα `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
+  
+ALTER TABLE review
+  ADD CONSTRAINT likert_scale_constraint CHECK (likert_scale >= 0 and likert_scale <= 5),
+  ADD CONSTRAINT check_review_status CHECK (review_status in ('approved', 'inapproved'));
+  
+--
+-- Περιορισμοι για πινακα 'school_unit'
+--
+ALTER TABLE school_unit
+  ADD CONSTRAINT sch_ph_number_length CHECK (LENGTH(ph_nmbr) = 10);
+
+--
+--Περιορισμοι για πινακα 'user'
+--
+ALTER TABLE user
+  ADD CONSTRAINT ph_number_length CHECK (LENGTH(ph_nmbr) = 10),
+  ADD CONSTRAINT positive_number_of_books CHECK (nmbr_of_books >= 0),
+  ADD CONSTRAINT positive_age CHECK (age >= 0),
+  ADD CONSTRAINT role_id_constraint CHECK (number >= 0 AND number <= 4),
+  ADD CONSTRAINT check_approved_status CHECK (approved_status IS NULL OR approved_status IN ('active', 'inactive'));
