@@ -779,7 +779,7 @@ ALTER TABLE `manages`
 --
 ALTER TABLE `review`
   ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`);
+  ADD CONSTRAINT `review_ibfk_2` FOREIGN KEY (`isbn`) REFERENCES `books` (`isbn`) ON UPDATE CASCADE;
   
 ALTER TABLE review
   ADD CONSTRAINT likert_scale_constraint CHECK (likert_scale >= 0 and likert_scale <= 5),
