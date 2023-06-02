@@ -605,7 +605,11 @@ ALTER TABLE `school_unit`
 -- Ευρετήρια για πίνακα `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `number` (`number`),
+  ADD KEY `approved_status` (`approved_status`),
+  ADD KEY `weekly_borrowing_count` (`weekly_borrowing_count`),
+  ADD KEY `weekly_booking_count` (`weekly_booking_count`);
 
 --
 -- AUTO_INCREMENT για άχρηστους πίνακες
