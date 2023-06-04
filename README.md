@@ -8,6 +8,7 @@ Project for the Databases 2023 class of 2nd semester in NTUA ECE. It simulates a
 - Mei Areti, 03120062
 
 ## E-R Diagram
+Library_ER.pdf
 
 
 
