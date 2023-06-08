@@ -1599,7 +1599,7 @@ def most_popular_genre():
                        bg2.genre_id AS category2_id, g2.genre_name AS category2_name,
                        COUNT(*) AS num_borrowings
                         FROM book_genre bg1
-                        JOIN book_genre bg2 ON bg1.isbn = bg2.isbn AND bg1.genre_id < bg2.genre_id
+                        JOIN book_genre bg2 ON bg1.isbn = bg2.isbn AND bg1.genre_id <> bg2.genre_id
                         JOIN genres g1 ON bg1.genre_id = g1.genre_id
                         JOIN genres g2 ON bg2.genre_id = g2.genre_id
                         JOIN borrowing b ON bg1.isbn = b.isbn
